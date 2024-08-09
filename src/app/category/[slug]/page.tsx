@@ -1,12 +1,17 @@
 import Link from 'next/link';
-import { getArticles } from '@/lib/database';
+import { getArticlesByCategory } from '@/lib/database';
+import { notFound } from 'next/navigation';
 
-export default async function Home() {
-  const articles = await getArticles();
+export default async function CategoryPage({ params }: { params: { slug: string } }) {
+  const articles = await getArticlesByCategory(params.slug);
+
+  if (articles.length === 0) {
+    notFound();
+  }
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold mb-4">Latest News</h1>
+    <div>
+      <h1 className="text-2xl font-['Great_Vibes'] mb-8 capitalize">{params.slug} News</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
           <div key={article.id} className="border rounded-lg overflow-hidden shadow-md">
