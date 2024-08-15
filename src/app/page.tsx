@@ -1,9 +1,34 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { getArticles } from '@/lib/database';
+// src/app/page.tsx
 
-export default async function Home() {
-  const articles = await getArticles();
+'use client';
+
+import { useEffect, useState } from 'react';
+import { Article, getArticles } from '@/lib/database'; // Import the Article type
+
+export default function Home() {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        const fetchedArticles = await getArticles();
+        console.log('Fetched Articles:', fetchedArticles); // Log fetched articles
+        setArticles(fetchedArticles);
+      } catch (err) {
+        console.error('Failed to fetch articles:', err);
+        setError('Failed to fetch articles.');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchArticles();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="space-y-8">
@@ -13,19 +38,17 @@ export default async function Home() {
           articles.map((article) => (
             <div key={article.id} className="border rounded-lg overflow-hidden shadow-md">
               <div className="relative w-full h-48">
-                <Image
+                <img
                   src={article.image_url}
                   alt={article.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="w-full h-48"
+                  className="w-full h-48 object-cover"
                 />
               </div>
               <div className="p-4">
                 <h2 className="text-xl font-bold mb-2">
-                  <Link href={`/article/${article.slug}`}>
-                    <a className="hover:text-blue-600">{article.title}</a>
-                  </Link>
+                  <a href={`/article/${article.slug}`} className="hover:text-blue-600">
+                    {article.title}
+                  </a>
                 </h2>
                 <p className="text-gray-600 mb-2">{article.excerpt}</p>
                 <p className="text-sm text-gray-500">
