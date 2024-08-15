@@ -1,3 +1,5 @@
+// lib/database.ts
+
 import { supabase } from './supabase';
 
 export interface Article {
@@ -8,50 +10,88 @@ export interface Article {
   content: string;
   author: string;
   category: string;
+  created_at: string;  // Use 'created_at' as string
   published_at: string;
   image_url: string;
 }
 
 export async function getArticles() {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .order('published_at', { ascending: false });
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .order('published_at', { ascending: false });
 
-  if (error) {
-    console.error('Error fetching articles:', error);
+    if (error) {
+      throw error;
+    }
+
+    return data as Article[];
+  } catch (err) {
+    console.error('Error fetching articles:', err);
     return [];
   }
-
-  return data as Article[];
 }
 
 export async function getArticleBySlug(slug: string) {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('slug', slug)
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('slug', slug)
+      .single();
 
-  if (error) {
-    console.error('Error fetching article:', error);
+    if (error) {
+      throw error;
+    }
+
+    return data as Article;
+  } catch (err) {
+    console.error('Error fetching article:', err);
     return null;
   }
-
-  return data as Article;
 }
 
 export async function getArticlesByCategory(category: string) {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('category', category)
-    .order('published_at', { ascending: false });
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('category', category)
+      .order('published_at', { ascending: false });
 
-  if (error) {
-    console.error('Error fetching articles by category:', error);
+    if (error) {
+      throw error;
+    }
+
+    return data as Article[];
+  } catch (err) {
+    console.error('Error fetching articles by category:', err);
     return [];
   }
+}
 
-  return data as Article[];
+export async function createArticle(article: Omit<Article, 'id' | 'created_at'>) {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .insert([{
+        ...article,
+        created_at: new Date().toISOString(),
+      }])
+      .select() // Select returns the inserted data
+      .single();  // Expect a single row response
+
+    console.log('Insert Data:', data); // Log the inserted data
+    console.error('Insert Error:', error); // Log any errors
+
+    if (error) {
+      throw error;
+    }
+
+    return data as Article;
+  } catch (err) {
+    console.error('Error creating article:', err);
+    return null;
+  }
 }
