@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { Article, getArticles } from '@/lib/database';
 
 export default function Home() {
@@ -24,7 +25,71 @@ export default function Home() {
     fetchArticles();
   }, []);
 
-  if (loading) return <p className="text-lg text-center font-article">Loading...</p>;
+  if (loading) {
+    return (
+      <div className="max-w-5xl mx-auto space-y-6">
+        <h1 className="text-3xl font-bold mb-2 font-article text-black pt-4">
+          <Skeleton width={200} />
+        </h1>
+        <div className="flex flex-col lg:flex-row gap-4">
+          {/* Main Articles Section */}
+          <div className="lg:w-2/3 space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="border overflow-hidden shadow-sm">
+                  <div className="relative w-full h-40">
+                    <Skeleton height={160} />
+                  </div>
+                  <div className="p-3">
+                    <h2 className="text-lg font-bold mb-2 font-article leading-tight text-black">
+                      <Skeleton width={150} />
+                    </h2>
+                    <p className="text-sm text-gray-700 mb-2 leading-relaxed font-article">
+                      <Skeleton count={3} />
+                    </p>
+                    <p className="text-xs text-gray-500 font-article">
+                      <Skeleton width={100} />
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Vertical Separator */}
+          <div className="hidden lg:block border-l border-gray-300"></div>
+
+          {/* Opinion Section */}
+          <div className="lg:w-1/3 space-y-4">
+            <h2 className="text-2xl font-bold mb-4 font-article text-black">
+              <Skeleton width={120} />
+            </h2>
+            <div className="space-y-4">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="border overflow-hidden shadow-sm">
+                  <div className="relative w-full h-32">
+                    <Skeleton height={120} />
+                  </div>
+                  <div className="p-3">
+                    <h2 className="text-md font-bold mb-2 font-article leading-tight text-black">
+                      <Skeleton width={100} />
+                    </h2>
+                    <p className="text-sm text-gray-700 mb-2 leading-relaxed font-article">
+                      <Skeleton count={2} />
+                    </p>
+                    <p className="text-xs text-gray-500 font-article">
+                      <Skeleton width={80} />
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (error) return <p className="text-lg text-red-600 text-center font-article">{error}</p>;
 
   const mainArticles = articles.filter(article => article.category !== 'opinion').slice(0, 6);
