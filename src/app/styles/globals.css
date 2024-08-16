@@ -1,40 +1,79 @@
-/* globals.css */
+/* Global CSS file or a specific CSS module */
 
-/* Ensure the body has a white background */
-body {
-    background-color: white;
-    color: black; /* Set default text color */
-}
-
-/* Style the footer with black background and white text */
-footer {
-    background-color: black;
-    color: white;
-}
-
-/* Style headings and paragraphs */
-h1, h2 {
-    color: black;
-}
-
-p {
-    color: black;
-    font-weight: 1000; /* Adjust this value for the desired weight (400 is normal, 700 is bold) */
-}
-
-/* Ensure that mobile screens also have a white background and black text */
-@media (max-width: 768px) {
-    body {
-        background-color: white;
-        color: black;
-    }
-    
-    footer {
-        background-color: black;
-        color: white;
-    }
-    
-    h1, h2, p {
-        color: black;
-    }
-}
+/* Smooth Hover Effects */
+.text-gray-600 {
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .text-gray-600:hover {
+    color: #000;
+    transform: scale(1.05);
+  }
+  
+  /* Slide-In Navigation Menu */
+  .menu-slide-in {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .menu-slide-in.open {
+    transform: translateX(0);
+  }
+  
+  /* Fade In Header Text */
+  .header-text {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+  
+  .header-text.visible {
+    opacity: 1;
+  }
+  
+  /* Subtle Header Line Animation */
+  .header-lines {
+    position: relative;
+  }
+  
+  .header-lines::before,
+  .header-lines::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: black;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .header-lines::before {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+  
+  .header-lines::after {
+    transform: scaleX(0);
+    transform-origin: bottom left;
+  }
+  
+  .header-lines:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  .header-lines:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom right;
+  }
+  
+  /* Smooth Scroll for Anchors */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Darker Navy Hover Text */
+  .hover\:text-dark-navy:hover {
+    color: #003366 !important; /* Darker Navy */
+  }
+  
