@@ -13,8 +13,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        'jetbrains': ['JetBrains Mono', 'monospace'],
+        'serif': ['Cormorant Garamond', 'serif'], // Ensure the serif font is available
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

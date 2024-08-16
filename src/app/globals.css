@@ -5,13 +5,14 @@
 :root {
   --foreground-rgb: 0, 0, 0; /* Black text color */
   --background-rgb: 255, 255, 255; /* White background */
+  --background-start-rgb: 240, 240, 240; /* Light gray start color */
+  --background-end-rgb: 255, 255, 255; /* White end color */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-rgb));
 }
-
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -26,5 +27,8 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .font-article {
+    font-family: 'Cormorant Garamond', serif;
   }
 }

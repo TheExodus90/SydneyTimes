@@ -3,33 +3,38 @@
 /* Ensure the body has a white background */
 body {
     background-color: white;
-  }
-  
-  /* Style the footer with black background and white text */
-  footer {
+    color: black; /* Set default text color */
+}
+
+/* Style the footer with black background and white text */
+footer {
     background-color: black;
     color: white;
-  }
-  
-  /* Ensure that text color is black */
-  h1, h2, p {
+}
+
+/* Style headings and paragraphs */
+h1, h2 {
     color: black;
-  }
-  
-  /* Ensure that mobile screens also have a white background and black text */
-  @media (max-width: 768px) {
+}
+
+p {
+    color: black;
+    font-weight: 1000; /* Adjust this value for the desired weight (400 is normal, 700 is bold) */
+}
+
+/* Ensure that mobile screens also have a white background and black text */
+@media (max-width: 768px) {
     body {
-      background-color: white;
-      color: black;
+        background-color: white;
+        color: black;
     }
     
     footer {
-      background-color: black;
-      color: white;
+        background-color: black;
+        color: white;
     }
     
     h1, h2, p {
-      color: black;
+        color: black;
     }
-  }
-  
+}

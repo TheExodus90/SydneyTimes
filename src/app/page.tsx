@@ -24,15 +24,15 @@ export default function Home() {
     fetchArticles();
   }, []);
 
-  if (loading) return <p className="text-lg">Loading...</p>;
-  if (error) return <p className="text-lg text-red-600">{error}</p>;
+  if (loading) return <p className="text-lg text-center font-article">Loading...</p>;
+  if (error) return <p className="text-lg text-red-600 text-center font-article">{error}</p>;
 
   const mainArticles = articles.filter(article => article.category !== 'opinion').slice(0, 6);
   const opinionArticles = articles.filter(article => article.category === 'opinion').slice(0, 3);
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold mb-2 font-sans text-black pt-4">Latest News</h1>
+      <h1 className="text-3xl font-bold mb-2 font-article text-black pt-4">Latest News</h1>
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Main Articles Section */}
         <div className="lg:w-2/3 space-y-4">
@@ -48,20 +48,20 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-3">
-                    <h2 className="text-lg font-bold mb-2 font-sans leading-tight text-black">
+                    <h2 className="text-lg font-bold mb-2 font-article leading-tight text-black">
                       <a href={`/article/${article.slug}`} className="hover:text-blue-600">
                         {article.title}
                       </a>
                     </h2>
-                    <p className="text-sm text-gray-700 mb-2 leading-relaxed">{article.excerpt}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-sm text-gray-700 mb-2 leading-relaxed font-article">{article.excerpt}</p>
+                    <p className="text-xs text-gray-500 font-article">
                       By {article.author} | {new Date(article.published_at).toLocaleDateString()}
                     </p>
                   </div>
                 </div>
               ))
             ) : (
-              <p className="text-center text-gray-500 text-lg">No articles available.</p>
+              <p className="text-center text-gray-500 text-lg font-article">No articles available.</p>
             )}
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function Home() {
 
         {/* Opinion Section */}
         <div className="lg:w-1/3 space-y-4">
-          <h2 className="text-2xl font-bold mb-4 font-sans text-black">Opinion</h2>
+          <h2 className="text-2xl font-bold mb-4 font-article text-black">Opinion</h2>
           <div className="space-y-4">
             {opinionArticles.length > 0 ? (
               opinionArticles.map((article) => (
@@ -84,20 +84,20 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-3">
-                    <h2 className="text-md font-bold mb-2 font-sans leading-tight text-black">
+                    <h2 className="text-md font-bold mb-2 font-article leading-tight text-black">
                       <a href={`/article/${article.slug}`} className="hover:text-blue-600">
                         {article.title}
                       </a>
                     </h2>
-                    <p className="text-sm text-gray-700 mb-2 leading-relaxed">{article.excerpt}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-sm text-gray-700 mb-2 leading-relaxed font-article">{article.excerpt}</p>
+                    <p className="text-xs text-gray-500 font-article">
                       By {article.author} | {new Date(article.published_at).toLocaleDateString()}
                     </p>
                   </div>
                 </div>
               ))
             ) : (
-              <p className="text-center text-gray-500 text-lg">No opinion articles available.</p>
+              <p className="text-center text-gray-500 text-lg font-article">No opinion articles available.</p>
             )}
           </div>
         </div>
