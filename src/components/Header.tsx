@@ -47,8 +47,8 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md fixed w-full top-0 left-0 z-50 border-b border-gray-200">
-      <div className="relative max-w-5xl mx-auto px-4 py-2 flex flex-col items-center">
-        <div className="relative flex flex-col items-center w-full">
+      <div className="relative max-w-5xl mx-auto px-4 py-2 flex items-center">
+        <div className="flex-grow flex flex-col items-center">
           <Link href="/" className="text-4xl font-['UnifrakturCook'] text-gray-800 text-center mb-1">
             The Baulkham Gazette
           </Link>
@@ -66,7 +66,7 @@ const Header = () => {
           <Link href="/category/opinion" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Opinion</Link>
         </nav>
         <button
-          className="md:hidden mt-2"
+          className="md:hidden absolute right-4 top-2"
           onClick={handleMenuClick}
         >
           {isMenuOpen ? (
