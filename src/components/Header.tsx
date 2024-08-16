@@ -71,7 +71,7 @@ const Header = () => {
           <Link href="/category/opinion" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Opinion</Link>
         </nav>
         <button
-          className="md:hidden absolute right-4 top-2"
+          className="md:hidden absolute bottom-2 right-4"
           onClick={handleMenuClick}
         >
           {isMenuOpen ? (
