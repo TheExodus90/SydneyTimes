@@ -116,7 +116,7 @@ export default function Home() {
                   </a>
                   <div className="p-3">
                     <h2 className="text-lg font-semibold mb-1 font-article leading-tight text-black">
-                      <a href={`/article/${article.slug}`} className="hover:text-dark-navy">
+                      <a href={`/article/${article.slug}`} className="hover:text-purple-900">
                         {article.title}
                       </a>
                     </h2>
@@ -154,7 +154,7 @@ export default function Home() {
                   </a>
                   <div className="p-3">
                     <h2 className="text-lg font-semibold mb-1 font-article leading-tight text-black">
-                      <a href={`/article/${article.slug}`} className="hover:text-dark-navy">
+                      <a href={`/article/${article.slug}`} className="hover:text-purple-900">
                         {article.title}
                       </a>
                     </h2>
