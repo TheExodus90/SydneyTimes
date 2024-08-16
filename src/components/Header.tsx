@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md fixed w-full top-0 left-0 z-50 border-b border-gray-200">
-      <div className="container mx-auto px-4 py-2 relative">
+      <div className="max-w-5xl mx-auto px-4 py-2 relative">
         <div className="absolute top-2 left-4 text-gray-600 text-sm font-['Cormorant_Garamond']">
           {currentTime}
         </div>
@@ -61,6 +61,11 @@ const Header = () => {
           </nav>
         </div>
       )}
+      {/* Lines below the header */}
+      <div className="max-w-5xl mx-auto relative">
+        <div className="border-t border-black w-full absolute bottom-0 left-0"></div>
+        <div className="border-t border-black w-full absolute bottom-0 left-0 transform translate-y-1"></div>
+      </div>
     </header>
   );
 };
