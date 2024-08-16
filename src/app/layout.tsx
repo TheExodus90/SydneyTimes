@@ -17,7 +17,7 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-black flex flex-col min-h-screen font-serif">
         <Header />
-        <main className="flex-grow container mx-auto px-4 py-8 pt-[90px]">
+        <main className="flex-grow container mx-auto px-4 py-8 pt-[95px]">
           {children}
         </main>
         <Footer />

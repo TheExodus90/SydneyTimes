@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold mb-4 font-sans text-black">Latest News</h1>
+      <h1 className="text-3xl font-bold mb-2 font-sans text-black">Latest News</h1>
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Main Articles Section */}
         <div className="lg:w-2/3 space-y-4">
