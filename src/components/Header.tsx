@@ -47,17 +47,26 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md fixed w-full top-0 left-0 z-50 border-b border-gray-200">
-      <div className="relative max-w-5xl mx-auto px-4 py-2 flex items-center justify-between">
-        {!isMobile && (
-          <div className="text-gray-600 text-sm font-['Cormorant_Garamond']">
-            {currentTime}
-          </div>
-        )}
-        <Link href="/" className="text-4xl font-['UnifrakturCook'] text-gray-800 text-center mb-1">
-          The Baulkham Gazette
-        </Link>
+      <div className="relative max-w-5xl mx-auto px-4 py-2 flex flex-col items-center">
+        <div className="relative flex flex-col items-center w-full">
+          <Link href="/" className="text-4xl font-['UnifrakturCook'] text-gray-800 text-center mb-1">
+            The Baulkham Gazette
+          </Link>
+          {!isMobile && (
+            <div className="text-gray-600 text-sm font-['Cormorant_Garamond'] mt-1 absolute top-2 left-4">
+              {currentTime}
+            </div>
+          )}
+        </div>
+        <nav className={`hidden md:flex justify-center space-x-4 mt-1 ${isMobile ? 'mt-4' : ''}`}>
+          <Link href="/category/politics" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Politics</Link>
+          <Link href="/category/technology" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Technology</Link>
+          <Link href="/category/science" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Science</Link>
+          <Link href="/category/culture" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Culture</Link>
+          <Link href="/category/opinion" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Opinion</Link>
+        </nav>
         <button
-          className="md:hidden"
+          className="md:hidden mt-2"
           onClick={handleMenuClick}
         >
           {isMenuOpen ? (
