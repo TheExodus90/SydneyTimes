@@ -1,0 +1,36 @@
+/* globals.css */
+
+/* Ensure the body has a white background */
+body {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Style the footer with black background and white text */
+  footer {
+    background-color: black;
+    color: white;
+  }
+  
+  /* Ensure that text color is black */
+  h1, h2, p {
+    color: black;
+  }
+  
+  /* Ensure that mobile screens also have a white background and black text */
+  @media (max-width: 768px) {
+    body {
+      background-color: white;
+      color: black;
+    }
+    
+    footer {
+      background-color: black;
+      color: white;
+    }
+    
+    h1, h2, p {
+      color: black;
+    }
+  }
+  

@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold mb-4 font-sans">Latest News</h1>
+      <h1 className="text-3xl font-bold mb-4 font-sans text-black">Latest News</h1>
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Main Articles Section */}
         <div className="lg:w-2/3 space-y-4">
@@ -48,7 +48,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-3">
-                    <h2 className="text-lg font-bold mb-2 font-sans leading-tight">
+                    <h2 className="text-lg font-bold mb-2 font-sans leading-tight text-black">
                       <a href={`/article/${article.slug}`} className="hover:text-blue-600">
                         {article.title}
                       </a>
@@ -71,7 +71,7 @@ export default function Home() {
 
         {/* Opinion Section */}
         <div className="lg:w-1/3 space-y-4">
-          <h2 className="text-2xl font-bold mb-4 font-sans">Opinion</h2>
+          <h2 className="text-2xl font-bold mb-4 font-sans text-black">Opinion</h2>
           <div className="space-y-4">
             {opinionArticles.length > 0 ? (
               opinionArticles.map((article) => (
@@ -84,7 +84,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-3">
-                    <h2 className="text-md font-bold mb-2 font-sans leading-tight">
+                    <h2 className="text-md font-bold mb-2 font-sans leading-tight text-black">
                       <a href={`/article/${article.slug}`} className="hover:text-blue-600">
                         {article.title}
                       </a>
