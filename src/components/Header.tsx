@@ -40,6 +40,7 @@ const Header = () => {
             <Link href="/category/technology" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Technology</Link>
             <Link href="/category/science" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Science</Link>
             <Link href="/category/culture" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Culture</Link>
+            <Link href="/category/opinion" className="text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Opinion</Link>
           </nav>
           <button
             className="md:hidden mt-2"
@@ -58,6 +59,7 @@ const Header = () => {
             <Link href="/category/technology" className="block text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Technology</Link>
             <Link href="/category/science" className="block text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Science</Link>
             <Link href="/category/culture" className="block text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Culture</Link>
+            <Link href="/category/opinion" className="block text-gray-600 hover:text-gray-900 text-sm font-['Cormorant_Garamond']">Opinion</Link>
           </nav>
         </div>
       )}
