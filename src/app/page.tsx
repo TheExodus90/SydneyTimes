@@ -105,16 +105,18 @@ export default function Home() {
             {mainArticles.length > 0 ? (
               mainArticles.map((article) => (
                 <div key={article.id} className="border overflow-hidden shadow-sm">
-                  <div className="relative w-full h-24">
-                    <img
-                      src={article.image_url}
-                      alt={article.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <a href={`/article/${article.slug}`} className="block">
+                    <div className="relative w-full h-24">
+                      <img
+                        src={article.image_url}
+                        alt={article.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </a>
                   <div className="p-3">
                     <h2 className="text-lg font-semibold mb-1 font-article leading-tight text-black">
-                      <a href={`/article/${article.slug}`} className="hover:text-purple-600">
+                      <a href={`/article/${article.slug}`} className="hover:text-dark-navy">
                         {article.title}
                       </a>
                     </h2>
@@ -141,16 +143,18 @@ export default function Home() {
             {opinionArticles.length > 0 ? (
               opinionArticles.map((article) => (
                 <div key={article.id} className="border overflow-hidden shadow-sm">
-                  <div className="relative w-full h-20">
-                    <img
-                      src={article.image_url}
-                      alt={article.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <a href={`/article/${article.slug}`} className="block">
+                    <div className="relative w-full h-20">
+                      <img
+                        src={article.image_url}
+                        alt={article.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </a>
                   <div className="p-3">
                     <h2 className="text-lg font-semibold mb-1 font-article leading-tight text-black">
-                      <a href={`/article/${article.slug}`} className="hover:text-purple-600">
+                      <a href={`/article/${article.slug}`} className="hover:text-dark-navy">
                         {article.title}
                       </a>
                     </h2>
