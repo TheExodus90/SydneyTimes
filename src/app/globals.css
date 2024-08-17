@@ -11,11 +11,6 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: rgb(var(--background-rgb));
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
@@ -30,5 +25,74 @@ body {
   }
   .font-article {
     font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+/* Smooth Hover Effects */
+.text-gray-600 {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.text-gray-600:hover {
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Fade In Header Text */
+.header-text {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.header-text.visible {
+  opacity: 1;
+}
+
+/* Subtle Header Line Animation */
+.header-lines {
+  position: relative;
+}
+
+.header-lines::before,
+.header-lines::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: black;
+  transition: transform 0.3s ease-in-out;
+}
+
+.header-lines::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.header-lines::after {
+  transform: scaleX(0);
+  transform-origin: bottom left;
+}
+
+.header-lines:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.header-lines:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom right;
+}
+
+/* Smooth Scroll for Anchors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Darker Navy Hover Text */
+@layer utilities {
+  .hover\:text-dark-navy:hover {
+    color: #003366 !important; /* Darker Navy */
   }
 }
