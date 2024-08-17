@@ -19,12 +19,33 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@layer base {
+  /* Apply Inter font to paragraphs and system font to article content */
+  p, .font-article-content {
+    font-family: system-ui, sans-serif; /* System font for paragraphs and article content */
+  }
+
+  /* Apply Cormorant Garamond to headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif; /* Cormorant Garamond for headings */
+  }
+}
+
+@layer components {
+  /* Define font styles for article headings */
+  .font-article-heading {
+    font-family: 'Cormorant Garamond', serif; /* Cormorant Garamond for article headings */
+    font-weight: 500; /* Example weight, adjust as needed */
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  .font-article {
-    font-family: 'Cormorant Garamond', serif;
+  
+  .hover\:text-dark-navy:hover {
+    color: #003366 !important; /* Darker Navy */
   }
 }
 
@@ -88,11 +109,4 @@ body {
 /* Smooth Scroll for Anchors */
 html {
   scroll-behavior: smooth;
-}
-
-/* Darker Navy Hover Text */
-@layer utilities {
-  .hover\:text-dark-navy:hover {
-    color: #003366 !important; /* Darker Navy */
-  }
 }
