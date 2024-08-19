@@ -15,11 +15,13 @@ export interface Article {
   image_url: string;
 }
 
-export async function getArticles() {
+// Fetch articles with pagination
+export async function getArticles(page: number = 1, limit: number = 10) {
   try {
     const { data, error } = await supabase
       .from('articles')
       .select('*')
+      .range((page - 1) * limit, page * limit - 1) // Pagination logic
       .order('published_at', { ascending: false });
 
     if (error) {
@@ -33,6 +35,7 @@ export async function getArticles() {
   }
 }
 
+// Fetch a single article by slug
 export async function getArticleBySlug(slug: string) {
   try {
     const { data, error } = await supabase
@@ -52,12 +55,14 @@ export async function getArticleBySlug(slug: string) {
   }
 }
 
-export async function getArticlesByCategory(category: string) {
+// Fetch articles by category with pagination
+export async function getArticlesByCategory(category: string, page: number = 1, limit: number = 10) {
   try {
     const { data, error } = await supabase
       .from('articles')
       .select('*')
       .eq('category', category)
+      .range((page - 1) * limit, page * limit - 1) // Pagination logic
       .order('published_at', { ascending: false });
 
     if (error) {
@@ -71,6 +76,7 @@ export async function getArticlesByCategory(category: string) {
   }
 }
 
+// Create a new article
 export async function createArticle(article: Omit<Article, 'id' | 'created_at'>) {
   try {
     const { data, error } = await supabase
