@@ -51,27 +51,27 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-md fixed w-full top-0 left-0 z-50 border-b border-gray-200">
+    <header className="bg-black shadow-md fixed w-full top-0 left-0 z-50 border-b border-gray-700">
       <div className={`relative max-w-5xl mx-auto px-4 py-3 flex items-center ${headerVisible ? 'opacity-100 transition-opacity duration-500' : 'opacity-0'}`}>
         <div className="flex-grow flex flex-col items-center">
-          <Link href="/" className="text-5xl font-['UnifrakturCook'] text-gray-800 text-center mb-1">
+          <Link href="/" className="text-5xl font-['UnifrakturCook'] text-white text-center mb-1">
             The Baulkham Gazette
           </Link>
           {!isMobile && (
-            <div className="text-gray-600 text-base font-['Cormorant_Garamond'] mt-1 absolute top-3 left-4">
+            <div className="text-gray-300 text-base font-['Cormorant_Garamond'] mt-1 absolute top-3 left-4">
               {currentTime}
             </div>
           )}
         </div>
         <nav className={`hidden md:flex justify-center space-x-4 mt-1 ${isMobile ? 'mt-4' : ''}`}>
-          <Link href="/category/politics" className="text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']">Politics</Link>
-          <Link href="/category/technology" className="text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']">Technology</Link>
-          <Link href="/category/science" className="text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']">Science</Link>
-          <Link href="/category/culture" className="text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']">Culture</Link>
-          <Link href="/category/opinion" className="text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']">Opinion</Link>
+          <Link href="/category/politics" className="text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']">Politics</Link>
+          <Link href="/category/technology" className="text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']">Technology</Link>
+          <Link href="/category/science" className="text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']">Science</Link>
+          <Link href="/category/culture" className="text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']">Culture</Link>
+          <Link href="/category/opinion" className="text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']">Opinion</Link>
         </nav>
         <button
-          className="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2"
+          className="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2 text-white"
           onClick={handleMenuClick}
         >
           <svg
@@ -95,19 +95,19 @@ const Header = () => {
       </div>
       {isMenuOpen && (
         <div className={`md:hidden menu-slide-in ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'} transition-transform duration-300`}>
-          <nav className="px-4 pt-2 pb-4 space-y-2 bg-white shadow-md">
-            <Link href="/category/politics" className="block text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Politics</Link>
-            <Link href="/category/technology" className="block text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Technology</Link>
-            <Link href="/category/science" className="block text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Science</Link>
-            <Link href="/category/culture" className="block text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Culture</Link>
-            <Link href="/category/opinion" className="block text-gray-600 hover:text-gray-900 text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Opinion</Link>
+          <nav className="px-4 pt-2 pb-4 space-y-2 bg-black shadow-md">
+            <Link href="/category/politics" className="block text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Politics</Link>
+            <Link href="/category/technology" className="block text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Technology</Link>
+            <Link href="/category/science" className="block text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Science</Link>
+            <Link href="/category/culture" className="block text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Culture</Link>
+            <Link href="/category/opinion" className="block text-gray-300 hover:text-white text-base font-['Cormorant_Garamond']" onClick={handleLinkClick}>Opinion</Link>
           </nav>
         </div>
       )}
       {/* Lines below the header */}
       <div className="max-w-5xl mx-auto relative header-lines">
-        <div className="border-t border-black w-full"></div>
-        <div className="border-t border-black w-full transform translate-y-[-1px]"></div>
+        <div className="border-t border-white w-full"></div>
+        <div className="border-t border-white w-full transform translate-y-[-1px]"></div>
       </div>
     </header>
   );
