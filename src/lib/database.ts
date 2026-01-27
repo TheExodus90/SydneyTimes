@@ -76,6 +76,57 @@ export async function getArticlesByCategory(category: string, page: number = 1, 
   }
 }
 
+// Get all unique categories
+export async function getCategories() {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('category')
+      .order('category', { ascending: true });
+
+    if (error) {
+      throw error;
+    }
+
+    // Extract unique categories
+    const uniqueCategories = Array.from(new Set(data.map(item => item.category)));
+    return uniqueCategories;
+  } catch (err) {
+    console.error('Error fetching categories:', err);
+    return [];
+  }
+}
+
+// Upload image to Supabase Storage
+export async function uploadImage(file: File): Promise<string | null> {
+  try {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2)}_${Date.now()}.${fileExt}`;
+    const filePath = `article-images/${fileName}`;
+
+    const { data, error } = await supabase.storage
+      .from('article-images')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
+
+    if (error) {
+      throw error;
+    }
+
+    // Get public URL
+    const { data: urlData } = supabase.storage
+      .from('article-images')
+      .getPublicUrl(filePath);
+
+    return urlData.publicUrl;
+  } catch (err) {
+    console.error('Error uploading image:', err);
+    return null;
+  }
+}
+
 // Create a new article
 export async function createArticle(article: Omit<Article, 'id' | 'created_at'>) {
   try {
