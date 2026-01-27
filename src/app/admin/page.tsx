@@ -2,9 +2,10 @@
 
 'use client'; // This line makes this component a Client Component
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { createArticle, uploadImage } from '@/lib/database';
 import { Article } from '@/lib/database'; // Import Article type
+import { slugify } from '@/lib/utils';
 
 // Categories matching the Header navigation
 const CATEGORIES = ['politics', 'technology', 'science', 'culture', 'opinion'];
@@ -23,6 +24,8 @@ export default function AdminPage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  // Track if slug was manually edited (so we don't auto-update it from title)
+  const slugManuallyEdited = useRef(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -75,8 +78,10 @@ export default function AdminPage() {
     }
 
     try {
+      // Ensure slug is properly formatted before submission
       const articleToSubmit = {
         ...article,
+        slug: slugify(article.slug), // Final sanitization
         image_url: finalImageUrl
       };
       
@@ -97,6 +102,7 @@ export default function AdminPage() {
           published_at: new Date().toISOString(),
           image_url: '',
         });
+        slugManuallyEdited.current = false; // Reset manual edit flag
         setSelectedFile(null);
         setImagePreview(null);
         // Reset file input
@@ -114,10 +120,28 @@ export default function AdminPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setArticle(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    
+    if (name === 'title') {
+      // Auto-generate slug from title if slug hasn't been manually edited
+      setArticle(prevState => ({
+        ...prevState,
+        title: value,
+        slug: slugManuallyEdited.current ? prevState.slug : slugify(value)
+      }));
+    } else if (name === 'slug') {
+      // Sanitize slug input in real-time
+      const sanitizedSlug = slugify(value);
+      slugManuallyEdited.current = true; // Mark as manually edited
+      setArticle(prevState => ({
+        ...prevState,
+        slug: sanitizedSlug
+      }));
+    } else {
+      setArticle(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
   };
 
   return (
@@ -132,14 +156,19 @@ export default function AdminPage() {
           required
           className="w-full px-3 py-2 border rounded"
         />
-        <input
-          name="slug"
-          value={article.slug}
-          onChange={handleChange}
-          placeholder="Slug"
-          required
-          className="w-full px-3 py-2 border rounded"
-        />
+        <div>
+          <input
+            name="slug"
+            value={article.slug}
+            onChange={handleChange}
+            placeholder="Slug (auto-generated from title)"
+            required
+            className="w-full px-3 py-2 border rounded"
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            Spaces and special characters will be converted to dashes. You can edit manually if needed.
+          </p>
+        </div>
         <textarea
           name="excerpt"
           value={article.excerpt}
