@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-4 border-t border-gray-700 pt-4 text-center">
-          <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} NewsHub. All rights reserved.</p>
+          <p className="text-gray-400 text-sm">2026 Created by ExoFi Labs. All rights reserved.</p>
         </div>
       </div>
     </footer>
