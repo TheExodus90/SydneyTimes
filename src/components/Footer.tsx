@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div>
             <h3 className="text-lg font-semibold mb-2">About Us</h3>
-            <p className="text-gray-300 hover:text-white font-['Cormorant_Garamond']">NewsHub is your trusted source for the latest news and in-depth analysis.</p>
+            <p className="text-gray-300 hover:text-white font-['Cormorant_Garamond']">The Baulkham Gazette delivers trusted journalism, in-depth reporting, and thoughtful commentary on the stories that matter most.</p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
